@@ -1,0 +1,26 @@
+service: serverless-slack-slashcmd-notion
+frameworkVersion: "2"
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: ap-northeast-1
+  stage: prod
+  lambdaHashingVersion: "20201221"
+  environment:
+    SLACK_SIGNING_SECRET: ${env:SLACK_SIGNING_SECRET}
+    SLACK_BOT_TOKEN: ${env:SLACK_BOT_TOKEN}
+    NOTION_TOKEN: ${env:NOTION_TOKEN}
+    MTG_DBID: ${env:MTG_DBID}
+    TROUBLESHOOTING_DBID: ${env:TROUBLESHOOTING_DBID}
+    DWREPORT_DBID: ${env:DWREPORT_DBID}
+    SLACKCONN_DBID: ${env:SLACKCONN_DBID}
+functions:
+  notion:
+    handler: app.handler
+    events:
+      - http:
+          path: slack/events
+          method: post
+plugins:
+  - serverless-offline
+  - serverless-plugin-typescript

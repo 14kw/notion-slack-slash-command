@@ -1,0 +1,28 @@
+{
+  "name": "notion-slack-slash-command",
+  "description": "Notion action command on Slack.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "start": "npm run build && node .build/app.js",
+    "local": "npm run build:live",
+    "build": "tsc -p .",
+    "build:live": "nodemon --watch './*.ts' --exec 'ts-node' ./app.ts",
+    "dev": "nodemon -L -w src -e ts -x \"tsc && node --require dotenv/config --inspect=localhost:9229 --experimental-modules .build/app.js\""
+  },
+  "dependencies": {
+    "@notionhq/client": "^0.4.4",
+    "@slack/bolt": "^3.7.0",
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.14",
+    "ts-node": "^10.4.0"
+  },
+  "devDependencies": {
+    "serverless": "^2.65.0",
+    "serverless-offline": "^8.2.0",
+    "serverless-plugin-typescript": "^2.1.0",
+    "typescript": "^4.4.4"
+  }
+}
