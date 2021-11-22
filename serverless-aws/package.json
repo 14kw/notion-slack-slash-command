@@ -3,8 +3,8 @@
   "description": "Notion action command on Slack.",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "",
-  "license": "ISC",
+  "author": "14kw",
+  "license": "MIT",
   "scripts": {
     "start": "npm run build && node .build/app.js",
     "local": "npm run build:live",
